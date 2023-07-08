@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale.0">
+  <title>Random New Quotes</title>
+  <link rel="stylesheet"  href = "styles.css">
+</head>
+<body>    
+
+  <div class="Quotebox">
+    <h2>Quote of the day</h2>
+    <blockquote id="quote">please wait...</blockquote>
+    <span id="author">please wait...</span>
+  <div>
+    <button onclick = "getquote(api_url)">NewQuote</button>
+    <button>share</button>
+  </div>
+</div>
+
+<script>  
+const quote = document.getElementById("quote");
+const author = document.getElementById("author");
+const api_url = "https://api.quotable.io/random";
+
+async function getquote(url){
+    const response = await fetch(url);
+    var data = await response.json();
+    
+    quote.innerHTML = data.content;
+    author.innerHTML = data.author;
+}
+
+getquote(api_url);
+
+</script>
+
+</body>
+</html>
